@@ -30,6 +30,7 @@
 //  3. This notice may not be removed or altered from any source distribution.
 //
 
+//  Edited to make more useful, removed disgusting formatting, made effective use of monitor - Richie
 
 #import <UIKit/UIKit.h>
 #pragma GCC diagnostic push
@@ -54,8 +55,9 @@ extern NSString *const AsyncImageErrorKey;
 @property (nonatomic, assign) NSUInteger concurrentLoads;
 @property (nonatomic, assign) NSTimeInterval loadingTimeout;
 
-- (void)loadImageWithURL:(NSURL *)URL target:(id)target success:(SEL)success failure:(SEL)failure;
-- (void)loadImageWithURL:(NSURL *)URL target:(id)target action:(SEL)action;
+
+- (void)loadImageWithURL:(NSURL *)URL headers:(NSDictionary*)headers target:(id)target success:(SEL)success failure:(SEL)failure;
+- (void)loadImageWithURL:(NSURL *)URL headers:(NSDictionary*)headers target:(id)target action:(SEL)action;
 - (void)loadImageWithURL:(NSURL *)URL;
 - (void)cancelLoadingURL:(NSURL *)URL target:(id)target action:(SEL)action;
 - (void)cancelLoadingURL:(NSURL *)URL target:(id)target;
@@ -71,6 +73,7 @@ extern NSString *const AsyncImageErrorKey;
 @interface UIImageView(AsyncImageView)
 
 @property (nonatomic, strong) NSURL *imageURL;
+-(void)setImageURL:(NSURL *)imageURL withHeaders:(NSDictionary*)headers;
 
 @end
 
